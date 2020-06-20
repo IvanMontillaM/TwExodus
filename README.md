@@ -4,7 +4,7 @@ Twitter application to mass contact your followers.
 Created for balajis/twitter-export bounty. If you're @balajis I'm happy to do a Zoom Session with you to test run my tool. Just contact me at *my-GitHub-username at gmail dot com*.
 
 ## Features
-- Retrieve followers and store these records in the `followers` table
+- Retrieve followers and store these records in the `followers` table, both in online and offline mode.
 
 ## Requirements
 - Basic knowledge of command line usage
