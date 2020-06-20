@@ -27,18 +27,60 @@ followers = api.GetFollowers()
 
 for user in followers:
 
-    follower = (user.created_at,
-                user.id_str,
-                user.name,
-                user.friends_count,
-                user.followers_count,
-                user.statuses_count,
-                0,
-                user.verified,
-                0,
-                0)
+    follower = ()
+    try:
+        c.execute('''INSERT INTO followers VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0);''',
+                  (user.id_str,
+                   user.created_at,
+                   user.screen_name,
+                   user.name,
+                   user.email,
+                   user.url,
+                   user.description,
+                   user.location,
+                   user.statuses_count,
+                   user.friends_count,
+                   user.followers_count,
+                   str(user.status.created_at if hasattr(user.status, "created_at") else ''),
+                   str(user.status.full_text if hasattr(user.status, "full_text") else ''),
+                   str(user.status.geo if hasattr(user.status, "geo") else ''),
+                   user.verified,
+                   user.protected))
+    except sqlite3.IntegrityError:
+        c.execute('''UPDATE followers SET 
+                  created_at = ?,
+                  username = ?,
+                  name = ?,
+                  url = ?,
+                  description = ?,
+                  location = ?,
+                  tweets_count = ?,
+                  following_count = ?,
+                  followers_count = ?,
+                  status_created_at = ?,
+                  status_full_text = ?,
+                  status_geo = ?,
+                  is_verified = ?,
+                  is_protected = ?
+                  WHERE user_id = ?;''',
+                  (user.created_at,
+                   user.screen_name,
+                   user.name,
+                   user.url,
+                   user.description,
+                   user.location,
+                   user.statuses_count,
+                   user.friends_count,
+                   user.followers_count,
+                   str(user.status.created_at if hasattr(user.status, "created_at") else ''),
+                   str(user.status.full_text if hasattr(user.status, "full_text") else ''),
+                   str(user.status.geo if hasattr(user.status, "geo") else ''),
+                   user.verified,
+                   user.protected,
+                   user.id_str))
+    except Exception as e:
+        print("Could not", str(e), user.screen_name)
 
-    c.execute('''INSERT OR IGNORE INTO followers VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);''', follower)
 
 conn.commit()
 conn.close()

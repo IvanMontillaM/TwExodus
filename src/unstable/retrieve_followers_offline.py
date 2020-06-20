@@ -23,7 +23,7 @@ fw_lines = ''.join(fw_lines)
 fw_json = json.loads(fw_lines)
 
 for fw in fw_json:
-    c.execute('''INSERT OR IGNORE INTO followers VALUES (0, ?, 0, 0, 0, 0, 0, 0, 0, 0);''',
+    c.execute('''INSERT OR IGNORE INTO followers VALUES (?, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);''',
               (fw['follower']['accountId'],))
 
 conn.commit()

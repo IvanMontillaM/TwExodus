@@ -32,6 +32,7 @@ if pending_work_hours <= 0:
     sys.exit()
 
 dms_left_to_send = 60 * pending_work_hours
+print("I am about to send %s DMs." % str(dms_left_to_send))
 
 msg_path = pathlib.Path(__file__).parent.parent.parent.joinpath('input').as_posix() + '/'
 f_msg = open(msg_path + messages_filename, 'r', newline='')
@@ -58,7 +59,7 @@ api = twitter.Api(
 )
 
 result = c.execute('''SELECT user_id FROM followers WHERE was_contacted = 0 ORDER BY priority DESC LIMIT ?;''',
-                 (str(dms_left_to_send),))
+                   (str(dms_left_to_send),))
 
 rows = []
 for row in result:
