@@ -1,4 +1,4 @@
-# Retrieval of followers and database insertion
+# Retrieval of followers online (API) and database insertion
 
 # Standard library imports
 import sqlite3

@@ -15,4 +15,4 @@ api = twitter.Api(
 # feed = api.GetHomeTimeline(count='75')
 # feed.reverse()
 
-# sendDM = api.PostDirectMessage('Test messaje', user_id=NUMBER)
+# sendDM = api.PostDirectMessage('Test message', user_id=NUMBER)

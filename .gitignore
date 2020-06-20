@@ -132,3 +132,4 @@ dmypy.json
 # Specific sanitized files
 .idea/
 src/*/tw_config.py
+input/follower.js
