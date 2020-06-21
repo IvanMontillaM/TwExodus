@@ -7,6 +7,7 @@ import pathlib
 import sys
 import random
 import sqlite3
+import statistics
 
 # Third party imports
 import twitter
@@ -31,7 +32,7 @@ pending_work_hours = end_hour - hour_now
 if pending_work_hours <= 0:
     sys.exit()
 
-dms_left_to_send = 60 * pending_work_hours
+dms_left_to_send = int(statistics.mean([min_delay_between_dms, max_delay_between_dms])) * pending_work_hours
 print("I am about to send %s DMs." % str(dms_left_to_send))
 
 msg_path = pathlib.Path(__file__).parent.parent.parent.joinpath('input').as_posix() + '/'
