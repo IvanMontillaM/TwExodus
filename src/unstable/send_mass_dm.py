@@ -18,7 +18,7 @@ import tw_config
 # Read configuration into local variables
 db_name = tw_config.db_name
 messages_filename = tw_config.messages_filename
-csv_filename = tw_config.csv_filename
+csv_filename = tw_config.msg_csv_filename
 dry_run = tw_config.dry_run
 start_hour = tw_config.start_hour
 end_hour = tw_config.end_hour
@@ -42,12 +42,10 @@ f_msg.close()
 lines_count = len(messages)
 
 csv_path = pathlib.Path(__file__).parent.parent.parent.joinpath('output').as_posix() + '/'
-
 f_csv = open(csv_path + csv_filename, 'a', newline='')
 csvf = csv.writer(f_csv)
 
 db_path = pathlib.Path(__file__).parent.parent.parent.joinpath('db').as_posix() + '/'
-
 conn = sqlite3.connect(db_path + db_name)
 c = conn.cursor()
 

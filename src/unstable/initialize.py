@@ -9,9 +9,15 @@ import csv
 import tw_config
 
 csv_path = pathlib.Path(__file__).parent.parent.parent.joinpath('output').as_posix() + '/'
-f_csv = open(csv_path + tw_config.csv_filename, 'w', newline='')
+f_csv = open(csv_path + tw_config.msg_csv_filename, 'w', newline='')
 csvf = csv.writer(f_csv)
 csvf.writerow(["user_id", "message_sent"])
+f_csv.close()
+
+csv_path = pathlib.Path(__file__).parent.parent.parent.joinpath('output').as_posix() + '/'
+f_csv = open(csv_path + tw_config.email_csv_filename, 'w', newline='')
+csvf = csv.writer(f_csv)
+csvf.writerow(["user_id", "username", "email"])
 f_csv.close()
 
 db_path = pathlib.Path(__file__).parent.parent.parent.joinpath('db').as_posix() + '/'

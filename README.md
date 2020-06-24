@@ -1,12 +1,12 @@
 # TwExodus
 Twitter application to mass contact your followers.
 
-Created for balajis/twitter-export bounty.
+Created for [Twitter Export](https://github.com/balajis/twitter-export) bounty.
 
 ## Understanding of the problem
-With the strong network effects Twitter currently presents as a platform, Twitter will obviously closely prevent any attempt at migrating your user base to another service.
+With the strong network effects Twitter currently presents as a platform, Twitter will closely prevent any attempt at migrating your user base to another service.
 
-Of course, this protective behaviour is against your own interests as Twitter user, along with the difficulty of contacting users *without their explicit consent*. This last point is really important as there are legal risks associated with this specific aspect of user contact.
+Of course, this protective behaviour is against your interests as Twitter user, along with the difficulty of contacting users *without their explicit consent*. This last point is really important as there are legal risks associated with this specific aspect of user contact.
 
 ## Proposed approach
 The Mass DM solution seems to be the right path at contacting users, but it must be done in a stealth way. So building stealth techniques to the solution was my main focus at development.
@@ -14,7 +14,7 @@ The Mass DM solution seems to be the right path at contacting users, but it must
 Elaborating on the basic stealth techniques currently implemented there are 3 items that distinguish:
 - Time randomization: Sleep script between a random amount of seconds per direct message sent
 - Time window: Do not run after too late in the night, as in simulating an intern doing manual work
-- Pool of predefined messages: Text file that contains predefined messages, in order to add noise and avoid detection. I recommend having at least 75-100 unique messages per 10k followers
+- Pool of predefined messages: Text file that contains predefined messages, to add noise and avoid detection. I recommend having at least 75-100 unique messages per 10k followers
 
 There's of course a lot of room for improvement for this specific implementation, here are some ideas:
 - Usage of K8s instances for spawning different IP addresses
@@ -24,7 +24,7 @@ There's of course a lot of room for improvement for this specific implementation
 - Usage of a mobile phone emulator with automated task jobs (i.e. Monkeyrunner) using the official Twitter application
 - Among several other stealth techniques 
 
-While it's possible to use web scrapers (e.g. Selenium) to navigate Twitter, it was my technical choice to avoid the usage of said technology, as in my experience I personally believe the functionality of web scrapers is far more prone to fail and require constant (almost daily) fine-tuning in order to work properly. I chose to use Twitter API wrappers because after all, as long as you use API keys from an already authorized application, Twitter should not be able to tell the difference, unless this script is abused in a mechanical way. Pretty much the user has to keep this in mind while using this script.
+While it's possible to use web scrapers (e.g. Selenium) to navigate Twitter, it was my technical choice to avoid the usage of said technology, as in my experience I believe the functionality of web scrapers is far more prone to fail and require constant (almost daily) fine-tuning to work properly. I chose to use Twitter API wrappers because after all, as long as you use API keys from an already authorized application, Twitter should not be able to tell the difference, unless this script is abused mechanically. Pretty much the user has to keep this in mind while using this script.
 
 I didn't explore the Affiliate Link solution as I am very limited in web development skills. With little modification, it can be made compatible with that approach, as the `screen_name` (username) field is already in scope for string concatenation when you send the private direct message.
 
