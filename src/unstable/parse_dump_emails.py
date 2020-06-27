@@ -24,7 +24,7 @@ auth.set_access_token(tw_config.access_token_key, tw_config.access_token_secret)
 api = tweepy.API(auth)
 
 # Pattern for finding emails
-pattern = r"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"
+pattern = r"([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)"
 
 # Connect to database
 db_path = pathlib.Path(__file__).parent.parent.parent.joinpath('db').as_posix() + '/'
