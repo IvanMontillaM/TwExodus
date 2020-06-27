@@ -3,6 +3,8 @@ Twitter application to mass contact your followers.
 
 Created for [Twitter Export](https://github.com/balajis/twitter-export) bounty.
 
+![](twexodus-demo.gif)
+
 ## Understanding of the problem
 With the strong network effects Twitter currently presents as a platform, Twitter will closely prevent any attempt at migrating your user base to another service.
 
