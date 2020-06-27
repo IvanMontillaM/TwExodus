@@ -33,7 +33,9 @@ A long term solution would be to build proper analytics and community management
 ---
 
 ## Technical features
-- Retrieve followers and store these records in the `followers` table, both in online and offline mode.
+- Retrieve followers and store these records in the `followers` table, both in online and offline mode
+- Mass DM with randomized direct messages out of your pool of predefined messages
+- Parsing of received email addresses in direct messages 
 
 ## Requirements
 - Basic knowledge of command line usage
@@ -48,12 +50,15 @@ A long term solution would be to build proper analytics and community management
 5. Authorize your Twitter account following these instructions: [Medium article](https://medium.com/@fbilesanmi/how-to-login-with-twitter-api-using-python-6c9a0f7165c5)
 6. Duplicate file `tw_config_sample.py` into `tw_config.py` replacing with your custom values
 7. Run the `initialize.py` script as this will create the empty database
-8. Run the `retrieve_followers_online.py` script as this will populate the `followers` table with your Twitter account followers
+8. Run the `retrieve_followers_online.py` script as this will populate the `followers` table with your Twitter account followers, alternatively you could use the `retrieve_followers_offline.py` if you have a `follower.js` file in the `input` directory
+9. You might want to change `priority` fields in the `followers` table with an SQLite 3 editor/client
+10. Customize your direct messages file in `input/messages.txt`, you can either have affiliate links or you could request email addresses
+11. Run the `send_mass_dm.py` script whenever you're ready, every day
+12. If you requested email addresses instead of sending affiliate links, you can use the `parse_dump_emails.py` script to parse email addresses from direct messages and dumping them in a CSV file in the `output` directory
 
 ## Implementation
 - Developed with **Python 3.8.3**
 - Works with **SQLite 3**
-- Under `src/stable` it's where you can find the polished script (polished given time constraints, of course)
 
 ## Nice to have's for the future
 - Several sets of API keys
